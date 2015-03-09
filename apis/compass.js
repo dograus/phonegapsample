@@ -21,11 +21,11 @@
 var compassWatch = null;
 
 function updateHeading(h) {
-    $('#heading').html(h.magneticHeading);
+    document.getElementById('heading').innerHTML = h.magneticHeading;
 }
 function compassError(error) {
     alert('Compass Error: ' + error.code);
-    $('#heading').html("Error");
+    document.getElementById('heading').innerHTML = "Error";
 }
 function toggleCompass() {
     if (compassWatch !== null) {

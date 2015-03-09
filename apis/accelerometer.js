@@ -18,7 +18,7 @@
  */
 
 function roundNumber(num) {  // Helper function
-    var dec = 3;
+    var dec = 2;
     var result = Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
     return result;
 }

@@ -27,11 +27,11 @@ function populateDB(tx) {
 }
 function errorCB(err) {
    console.log("Error processing SQL: " + err.code);
-   $('#sql-result').html("<strong>Error processing SQL: " + err.code + "</strong>");
+   document.getElementById('sql-result').innerHTML = "<strong>Error processing SQL: " + err.code + "</strong>";
 }
 function successCreateCB() {
    console.log("Success creating Database 1.0");
-   $('#sql-result').html("<strong>Success creating Database 1.0</strong>");
+   document.getElementById('sql-result').innerHTML = "<strong>Success creating Database 1.0</strong>";
 }
 var db = 0;
 function createDB(){
@@ -49,7 +49,8 @@ function querySuccess(tx, results) {
     console.log("Rows Affected = " + results.rowAffected);
     // the number of rows returned by the select statement
     console.log("Num. Rows Returned = " + results.rows.length);
-    $('#sql-result').html("<strong>Num. Rows Returned = " + results.rows.length + "</strong>");
+    document.getElementById('sql-result').innerHTML = 
+        "<strong>Num. Rows Returned = " + results.rows.length + "</strong>";
 }
 function queryDB(tx) {
     tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
@@ -65,17 +66,18 @@ function getSqlResultSet() {
 function writeLocalStorage() {
     window.localStorage.setItem("myKey", "myValue");
     var keyname = window.localStorage.key(0); // 0 because first and only setItem!
-    $('#local-storage-result').html("Wrote key: <strong>" + keyname + "</strong>");
+    document.getElementById('local-storage-result').innerHTML = "Wrote key: <strong>" + keyname + "</strong>";
 }
 function readLocalStorage() {
     var value = window.localStorage.getItem("myKey");
     if (!value) {
-        $('#local-storage-result').html("<strong>Null</strong> - Try Write first");        
+        document.getElementById('local-storage-result').innerHTML = "<strong>Null</strong> - Try Write first";        
     } else {
-        $('#local-storage-result').html("Got value: <strong>" + value + "</strong>");
+        document.getElementById('local-storage-result').innerHTML = 
+                "Got value: <strong>" + value + "</strong>";
     }
 }
 function removeItemLocalStorage() {
     window.localStorage.removeItem("myKey");
-    $('#local-storage-result').html("Removed key/value: <strong>myKey/myValue</strong>");    
+    document.getElementById('local-storage-result').innerHTML = "Removed key/value: <strong>myKey/myValue</strong>";    
 }

@@ -30,5 +30,5 @@ function check_network() {
     states[Connection.CELL_4G]  = 'Cell 4G connection';
     states[Connection.NONE]     = 'No network connection';
 
-    $('#connection').html(states[networkState]);
+    document.getElementById('connectionstate').innerHTML = states[networkState];
 }
