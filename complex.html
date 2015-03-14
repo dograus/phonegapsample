@@ -21,35 +21,42 @@
 
 		<div data-role="header">
 			<h1>jQM Autocomplete</h1>
-			<select id="examples" data-mini="true" data-native-menu="false">
-				<option value="index.html">Remote Array</option>
-				<option value="complex.html">Remote Object</option>
-				<option value="array.html">Local Array</option>
-				<option value="local_complex.html">Local Object</option>
-				<option value="callback.html">Callback</option>
-				<option value="callback-plus.html">Callback Plus</option>
-				<option value="search.html" selected="true">Using Search Input</option>
-			</select>
+			<div>
+				<select id="examples" data-mini="true" data-native-menu="false">
+					<option value="index.html">Remote Array</option>
+					<option value="complex.html" selected="true">Remote Object</option>
+					<option value="array.html">Local Array</option>
+					<option value="local_complex.html">Local Object</option>
+					<option value="callback.html">Callback</option>
+					<option value="callback-plus.html">Callback Plus</option>
+					<option value="search.html">Using Search Input</option>
+				</select>
+			</div>
 		</div>
 
 		<div data-role="content">
 
-			<h3>Local Simple Data</h3>
+			<h3>Remote Complex Data</h3>
 
 			<p>
-				In this example autoComplete uses a local array comprised of strings. This also shows an example of the matchFromStart property set to false.
+				In this example autoComplete returns an array of objects from a remote url, each with a label and a value key.
 			</p>
 
 			<pre>
 [
-    "JavaScript",
-    "Python",
-    "Ruby"
-];
+    {
+        value: "22",
+        label: "Maine"
+    },
+    {
+        value: "23",
+        label: "Maryland"
+    }
+]
 			</pre>
 
 			<p>
-				<input type="search" id="searchBox" placeholder="Categories">
+				<input type="text" id="searchField" placeholder="US States">
 				<ul id="suggestions" data-role="listview" data-inset="true"></ul>
 			</p>
 
@@ -62,17 +69,13 @@
 	</div>
 
 	<script>
+		$("#mainPage").on("pageshow", function(e) {
 
-		$("#mainPage").bind("pageshow", function(e) {
-
-			var data = ['C', 'Clojure', 'Java', 'Scala', 'Objective-C', 'C++', 'PHP', 'C#', '(Visual) Basic', 'Python', 'Perl', 'JavaScript', 'Ruby', 'Visual Basic .NET', 'Transact-SQL', 'Lisp', 'Pascal', 'Bash', 'PL/SQL', 'Delphi/Object Pascal', 'Ada', 'MATLAB'];
-
-			$("#searchBox").autocomplete({
+			$("#searchField").autocomplete({
 				target: $('#suggestions'),
-				source: data,
+				source: 'data.cfc?method=search&returnformat=json&data=complex',
 				link: 'target.html?term=',
-				minLength: 1,
-				matchFromStart: false
+				minLength: 1
 			});
 		});
 	</script>

@@ -11,7 +11,7 @@
 
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-	<script src="jqm.autoComplete-1.5.2-min.js"></script>
+	<script src="jqm.autoComplete-1.5.2.js"></script>
 	<script src="code.js"></script>
 </head>
 
@@ -24,11 +24,11 @@
 			<select id="examples" data-mini="true" data-native-menu="false">
 				<option value="index.html">Remote Array</option>
 				<option value="complex.html">Remote Object</option>
-				<option value="array.html">Local Array</option>
+				<option value="array.html" selected="true">Local Array</option>
 				<option value="local_complex.html">Local Object</option>
 				<option value="callback.html">Callback</option>
 				<option value="callback-plus.html">Callback Plus</option>
-				<option value="search.html" selected="true">Using Search Input</option>
+				<option value="search.html">Using Search Input</option>
 			</select>
 		</div>
 
@@ -49,7 +49,7 @@
 			</pre>
 
 			<p>
-				<input type="search" id="searchBox" placeholder="Categories">
+				<input type="text" id="searchField" placeholder="Categories">
 				<ul id="suggestions" data-role="listview" data-inset="true"></ul>
 			</p>
 
@@ -67,7 +67,7 @@
 
 			var data = ['C', 'Clojure', 'Java', 'Scala', 'Objective-C', 'C++', 'PHP', 'C#', '(Visual) Basic', 'Python', 'Perl', 'JavaScript', 'Ruby', 'Visual Basic .NET', 'Transact-SQL', 'Lisp', 'Pascal', 'Bash', 'PL/SQL', 'Delphi/Object Pascal', 'Ada', 'MATLAB'];
 
-			$("#searchBox").autocomplete({
+			$("#searchField").autocomplete({
 				target: $('#suggestions'),
 				source: data,
 				link: 'target.html?term=',
